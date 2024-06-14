@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: swagger
+
+
+spring:
+  mvc:
+#    throw-exception-if-no-handler-found: true
+  application:
+    name: payment-demo
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/payment_demo
+    username: root
+    password: oweikj
+
+#微信支付相关参数
+wxpay:
+  #  商户号
+  mch-id: 1558950191
+  #  商户API证书序列号
+  mch-serial-no: 34345964330B66427E0D3D28826C4993C77E631F
+  #  商户私钥文件
+  private-key-path: apiclient_key.pem
+  #  APIv3密钥
+  api-v3-key: UDuLFDcmy5Eb6o0nTNZdu6ek4DDh4K8B
+  #  APPID
+  appid: wx74862e0dfcf69954
+  #  微信服务器地址
+  domain: https://api.mch.weixin.qq.com
+  #  接收结果通知地址
+  notify-domain: https://5fc3-218-19-150-210.ngrok.io
+  #  APIv2密钥
+  partnerKey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+
+alipay:
+  #  商户号
+  mch-id: 1558950192
