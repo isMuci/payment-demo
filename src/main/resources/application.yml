@@ -1,5 +1,9 @@
 server:
   port: 8080
+logging:
+  level:
+    root: info
+#    root: debug
 
 springdoc:
   swagger-ui:

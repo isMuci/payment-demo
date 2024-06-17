@@ -1,9 +1,11 @@
 package com.example.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @TableName("t_order_info")
 public class OrderInfo extends BaseEntity{
     private String title;
@@ -13,5 +15,4 @@ public class OrderInfo extends BaseEntity{
     private Integer totalFee;
     private String codeUrl;
     private String orderStatus;
-
 }
