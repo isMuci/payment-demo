@@ -33,7 +33,7 @@ import org.springframework.stereotype.Service;
 public class WxPayServiceImpl implements WxPayService {
 
     @Autowired
-    private Config wxPayConfig;
+    private WxPayConfig wxPayConfig;
 
     @Autowired
     private OrderInfoService orderInfoService;
@@ -42,7 +42,7 @@ public class WxPayServiceImpl implements WxPayService {
     public PrePayRes appPay(Long productId) {
         OrderInfo orderInfo=orderInfoService.createOrderByProductId(productId);
         log.info("appPay.orderInfo : {}",orderInfo);
-        AppService service =new AppService.Builder().config(wxPayConfig).build();
+        AppService service =new AppService.Builder().config(wxPayConfig.getConfig()).build();
         log.info("生成订单");
         PrepayRequest request = new PrepayRequest();
         Amount amount = new Amount();
@@ -77,8 +77,7 @@ public class WxPayServiceImpl implements WxPayService {
                 .timestamp(wechatTimestamp)
                 .body(requestBody)
                 .build();
-        NotificationParser parser = new NotificationParser((NotificationConfig) wxPayConfig);
-
+        NotificationParser parser = new NotificationParser((NotificationConfig) wxPayConfig.getConfig());
         //TODO MUCI 2024/6/17: 全局异常处理，https://github.com/wechatpay-apiv3/wechatpay-java ，回调通知
         Transaction transaction = parser.parse(requestParam, Transaction.class);
     }
