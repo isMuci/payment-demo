@@ -1,12 +1,11 @@
 package com.example.controller;
 
-import com.example.entity.OrderInfo;
+import com.example.entity.PaymentInfo;
 import com.example.entity.PrePayRes;
 import com.example.service.WxPayService;
 import com.example.vo.Result;
 import com.wechat.pay.java.service.payments.model.Transaction;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,9 +41,9 @@ public class WxPayController {
     }
 
     @GetMapping("query/{orderNo}")
-    public Result<Transaction> query(@PathVariable String orderNo){
+    public Result<PaymentInfo> query(@PathVariable String orderNo){
         log.info("查询订单");
         Transaction transaction = wxPayService.queryOrder(orderNo);
-        return Result.ok(transaction);
+        return Result.ok(new PaymentInfo(transaction));
     }
 }

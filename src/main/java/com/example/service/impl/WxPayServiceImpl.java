@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import com.example.config.WxPayConfig;
 import com.example.entity.OrderInfo;
+import com.example.entity.PaymentInfo;
 import com.example.entity.PrePayRes;
 import com.example.enums.OrderStatus;
 import com.example.enums.wxpay.WxNotifyType;
@@ -94,7 +95,7 @@ public class WxPayServiceImpl implements WxPayService {
                 }
                 orderInfo.setOrderStatus(OrderStatus.SUCCESS.getType());
                 orderInfoService.updateByOrderNo(orderInfo);
-                paymentInfoService.saveByTransaction(transaction);
+                paymentInfoService.save(new PaymentInfo(transaction));
             } finally {
                 lock.unlock();
             }
@@ -146,7 +147,7 @@ public class WxPayServiceImpl implements WxPayService {
             log.warn("核实订单已支付 : {}", orderNo);
             orderInfo.setOrderStatus(OrderStatus.SUCCESS.getType());
             orderInfoService.updateByOrderNo(orderInfo);
-            paymentInfoService.saveByTransaction(result);
+            paymentInfoService.save(new PaymentInfo((result)));
         }
 
         if (WxTradeState.NOTPAY.getType().equals(tradeState)) {

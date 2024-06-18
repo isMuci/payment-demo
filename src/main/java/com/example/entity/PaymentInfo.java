@@ -1,7 +1,8 @@
 package com.example.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.wechat.pay.java.service.partnerpayments.app.model.Transaction;
+import com.example.enums.PayType;
+import com.wechat.pay.java.service.payments.model.Transaction;
 import lombok.Builder;
 import lombok.Data;
 
@@ -16,4 +17,14 @@ public class PaymentInfo extends BaseEntity{
     private String trade_state;
     private Integer payer_total;
     private String content;
+
+    public PaymentInfo(Transaction t){
+        orderNo=t.getOutTradeNo();
+        transaction_id=t.getTransactionId();
+        payment_type=PayType.WXPAY.getType();
+        trade_type=t.getTradeType().toString();
+        trade_state=t.getTradeState().toString();
+        payer_total=t.getAmount().getPayerTotal();
+        content=t.toString();
+    }
 }
