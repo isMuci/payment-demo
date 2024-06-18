@@ -21,11 +21,6 @@ public class ProductController<T> {
     @Autowired
     private WxPayConfig wxPayConfig;
 
-    @GetMapping("/test")
-    public Result<String> test(){
-        return Result.ok(wxPayConfig.getMchId());
-    }
-
     @GetMapping("/list")
     public Result<List<Product>> list(){
         List<Product> list = productService.list();
