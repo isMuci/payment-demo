@@ -40,11 +40,42 @@
         </set>
         where id = #{id}
     </update>
+    <update id="updateByOrderNo">
+        update t_order_info
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId},
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee},
+            </if>
+            <if test="codeUrl != null and codeUrl != ''">
+                code_url = #{codeUrl},
+            </if>
+            <if test="orderStatus != null and orderStatus != ''">
+                order_status = #{orderStatus},
+            </if>
+        </set>
+        where order_no = #{orderNo}
+    </update>
     <select id="listByCreateTimeDesc" resultMap="OrderInfoMap">
         select
         title, order_no, user_id, product_id, total_fee, code_url, order_status, id, create_time, update_time
         from t_order_info
         order by create_time
         desc
+    </select>
+    <select id="getNoPayOrderByDuration" resultMap="OrderInfoMap">
+        select
+        title, order_no, user_id, product_id, total_fee, code_url, order_status, id, create_time, update_time
+        from t_order_info
+        where create_time <![CDATA[ <= ]]> #{createTime}
+        and order_status = #{orderStatus}
     </select>
 </mapper>

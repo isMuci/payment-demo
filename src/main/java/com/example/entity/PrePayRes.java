@@ -9,8 +9,8 @@ public class PrePayRes {
     private String orderNo;
     private String codeUrl;
 
-    public PrePayRes(OrderInfo update) {
-        orderNo=update.getOrderNo();
-        codeUrl=update.getCodeUrl();
+    public PrePayRes(OrderInfo o) {
+        orderNo=o.getOrderNo();
+        codeUrl=o.getCodeUrl();
     }
 }

@@ -9,4 +9,9 @@ public interface OrderInfoService extends IService<OrderInfo> {
     OrderInfo createOrderByProductId(Long productId);
     OrderInfo update(OrderInfo orderInfo);
     List<OrderInfo> listByCreateTimeDesc();
+    void updateByOrderNo(OrderInfo orderInfo);
+
+    OrderInfo getByOrderNo(OrderInfo orderInfo);
+
+    List<OrderInfo> getNoPayOrderByDuration(int i);
 }

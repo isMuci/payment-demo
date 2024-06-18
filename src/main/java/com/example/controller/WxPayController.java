@@ -1,16 +1,15 @@
 package com.example.controller;
 
+import com.example.entity.OrderInfo;
 import com.example.entity.PrePayRes;
 import com.example.service.WxPayService;
 import com.example.vo.Result;
+import com.wechat.pay.java.service.payments.model.Transaction;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("wx-pay")
@@ -31,6 +30,21 @@ public class WxPayController {
     public Result appNotify(HttpServletRequest request){
         log.info("微信支付回调");
         wxPayService.appNotify(request);
-        return null;
+        return Result.ok();
+    }
+
+
+    @GetMapping("cancel/{orderNo}")
+    public Result cancel(@PathVariable String orderNo){
+        log.info("取消订单");
+        wxPayService.cancelOrder(orderNo);
+        return Result.ok();
+    }
+
+    @GetMapping("query/{orderNo}")
+    public Result<Transaction> query(@PathVariable String orderNo){
+        log.info("查询订单");
+        Transaction transaction = wxPayService.queryOrder(orderNo);
+        return Result.ok(transaction);
     }
 }

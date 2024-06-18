@@ -12,4 +12,8 @@ public interface OrderInfoMapper extends BaseMapper<OrderInfo> {
     int update(OrderInfo orderInfo);
 
     List<OrderInfo> listByCreateTimeDesc();
+
+    void updateByOrderNo(OrderInfo orderInfo);
+
+    List<OrderInfo> getNoPayOrderByDuration(OrderInfo createTime);
 }
