@@ -15,12 +15,12 @@ public class WxPayConfig {
     private String mchSerialNo;
     private String privateKeyPath;
     private String apiV3Key;
-    private String appid;
+    private String appId;
     private String domain;
     private String notifyDomain;
     private Config config;
     @PostConstruct
-    public void WxPayConfig(){
+    public void wxPayConfig(){
         this.config=new RSAAutoCertificateConfig.Builder()
                 .merchantId(mchId)
                 .privateKeyFromPath(privateKeyPath)

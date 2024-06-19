@@ -25,7 +25,7 @@ public class WxPayTask {
     @Autowired
     private WxPayService wxPayService;
 
-    @Scheduled(cron = "0/30 * * * * ?")
+//    @Scheduled(cron = "0/30 * * * * ?")
     public void orderConfirm(){
         log.info("查找超时订单");
         List<OrderInfo> list=orderInfoService.getNoPayOrderByDuration(5);
@@ -36,7 +36,7 @@ public class WxPayTask {
         }
     }
 
-    @Scheduled(cron = "0/30 * * * * ?")
+//    @Scheduled(cron = "0/30 * * * * ?")
     public void refundConfirm(){
         log.info("查找超时退款");
         List<RefundInfo> list=refundInfoService.getProcessingRefundByDuration(5);

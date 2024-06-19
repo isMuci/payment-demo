@@ -32,7 +32,7 @@ wxpay:
   #  APIv3密钥
   api-v3-key: UDuLFDcmy5Eb6o0nTNZdu6ek4DDh4K8B
   #  APPID
-  appid: wx74862e0dfcf69954
+  app-id: wx74862e0dfcf69954
   #  微信服务器地址
   domain: https://api.mch.weixin.qq.com
   #  接收结果通知地址
@@ -40,6 +40,25 @@ wxpay:
   #  APIv2密钥
   partnerKey: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
 
+#支付宝相关参数
 alipay:
-  #  商户号
-  mch-id: 1558950192
+  #  APPID
+  app-id: 9021000138632627
+  #商户PID
+  seller-id: 2088721037840482
+  #支付宝网关
+  gateway-url: https://openapi-sandbox.dl.alipaydev.com/gateway.do
+  #商户私钥
+  merchant-private-key: MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQyq36vb1oHjezPcdTovl5vbn9HHpKfTRZdRpy1jtEOcV14l8RhiufA0wfh8hScH+DdNDEi3Vl2ngdfjrRFlzQ9pKUxQi9WNo5iDr9BHC9lhqFupIWDnxc3bTVtG1Z/lxcFHnr+I93YpKUigLRkER8xma6f2xRJS2DUAy9aQXgjlIjNgq5sD88obIRXHwGVpHqX2tZ2ybMweSCWgYcuObJ+bWHx0L1PvVHfUwTBWyzYWLkTjiHti07ezUN//uhpM8zjEXg20fEVgbKVtVakFVFd4ritwQq0+AgdD2sla9KFBiZ9/ZaD438/4AfWW1u/8XTtU67YIaPRro4DnIwsg/lAgMBAAECggEBAK+vK4/Foh9+9a1ruVJF2xe2Lk6tbLVK/wabA6NHYl05I07bKNWNCR1m3+HUFhpQMOuDGruXATSwDMv8UC9pWrY2FAb8eCsjHZS1bbVCzD6qlCycXZoTnE9j+mqrxCuqXTrZu/Fzl/yDxAUaz95YP1iidQROfe0VlGNesymZumlEsoXzpL4OVbOcpS+gKsKwHglqbCmU8flmT2HWPGpWLf4ODyK3BAZLK7pjH6pJeY5uBzW3ZaPkBwDjbniSGBnBjBfcL3zE/N9RsLZyNc2jZ9eTiNlBBTBdft1NAjWntI51Ewve9DcIOWa/RgHid2M67lLsXHx5paFrfCL+3mTVvi0CgYEA8xifomziwu77O91L5yFzpWn7S+kU/2QhDLSJi4Awn+R1elJV3SLo1/YDjGl1M6F38NtcQbK+4cm0iuPFEYuULjVIjxhOP6OP1YSbfl4HosrTwSqkHgmQmmMxlQy1bsiTMg/Bu8mfCYdZtCi9uaxxbPgBxYlHknX2wvb+illH3bsCgYEA29/mlzwxMINlsqZL3xHNIlX8c+lzRuL3NtAO8dUfudy4GCC+AZyCB9hSQ/+p4IXm4BKd7qCq1O5vEm5gZw2aieCVvyA2yeRPZ6zJZnIwCBLxXkO5a8tIud9HoNO2XjwE6VbmgYuO9HuytUe/t0e/Ol9zkVM7z+XaE5arvv2UHt8CgYEA1DC5Hrj2knqxl0aJ+3zKiidhL5iLOIW5B3MK4FaLmvV6ycPWqQjQv7lAza47nE6j9/wxojMYxNMgoV9BZBg2xsLBzA3GN2xYn2J5q6r99U4f2euTh5iHvQs6e0S1lbbELR1t2LGb/WBEn6o0OT7ZXul3+mnirGgFdZbNBgv6XAMCgYEAqYUW48MkqaKk5fgQxwuSfMaOvU9f8WdL8pa27vzCWSozRWb5F4TzO9kslACpmNGkD15LJY/6JfEu8abn7Iwwed0Nly3fEAlWrzgojzO6lH8GWQceDl3M1IGxV+3izQS5RK4bSgWvUg+M2PdYeJZ4eSjekUz68G7mk/O2tqoLaUECgYAZt0nmzAJBcnMhwZNBYQPdGJMRTpfQNCirm5m6KXDF3CXU2VcOGJr1A1j4yFUhVVQcng7WV6V4IdDwl+Ud25RzIP48CO1sN9YnlYCucFH0ipm57oFkXxo+MWNHyP/yGUsr75p6MEIXs1/bWqDlMKJQyuvefvs3VAYa1ckfGGyZ4g==
+  #支付宝公钥
+  alipay-public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArdX2A3F3WAqE7Qt97oZSMV3XPZWY6tgHss42fRyfGSCx6IRseRmDfptpFWMNP3MBpl8hnpWpzr/cnINhg8EBBKLwz4q4bo1k5mdp14V8rGjXHOpDSlqqmQFVMt7DZh6LCjTztf3SaI+rxRriSV3RI5U+sJEJnKKPI7PRYQdCEyeYuvo2ylnplVD1EZLJ+ON6dyeqPU1Ngdi65pdQsw70sRXQbp0oufP6cOxMFNGwX9zh0RiLMmeZ3pOECBPg0/2JgPhY3etVOy8mqTp2Y1D7bOWPmq8ZmWQyqMwMQBPD3fZxzw9DvxxrpowIRnTM6vwzELLz19V2/uxd2SkuUbw6hQIDAQAB
+  #接口密钥
+  content-key: T4jfFsmOoc0Tfi4oJ7UCcQ==
+  #页面跳转同步通知页面
+  return-url: http://localhost:8080/#/success
+  #接收结果通知地址
+  notify-url: https://f16e-202-104-53-226.ngrok.io/api/ali-pay/trade/notify
+
+
+
+

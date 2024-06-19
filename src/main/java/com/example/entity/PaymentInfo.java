@@ -3,12 +3,15 @@ package com.example.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.enums.PayType;
 import com.wechat.pay.java.service.payments.model.Transaction;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
 @TableName("t_payment_info")
+@AllArgsConstructor
 public class PaymentInfo extends BaseEntity{
     private String orderNo;
     private String transaction_id;
