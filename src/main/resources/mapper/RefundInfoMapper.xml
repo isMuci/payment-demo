@@ -1,4 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mapper.RefundInfoMapper">
+    <resultMap id="RefundInfoMap" type="com.example.entity.RefundInfo">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="DATE"/>
+        <result property="updateTime" column="update_time" jdbcType="DATE"/>
+        <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+        <result property="refundNo" column="refund_no" jdbcType="VARCHAR"/>
+        <result property="refundId" column="refund_id" jdbcType="VARCHAR"/>
+        <result property="totalFee" column="total_fee" jdbcType="INTEGER"/>
+        <result property="refund" column="refund" jdbcType="INTEGER"/>
+        <result property="reason" column="reason" jdbcType="VARCHAR"/>
+        <result property="refundStatus" column="refund_status" jdbcType="VARCHAR"/>
+        <result property="contentReturn" column="content_return" jdbcType="VARCHAR"/>
+        <result property="contentNotify" column="content_notify" jdbcType="VARCHAR"/>
+    </resultMap>
+    <update id="updateByRefundNo">
+        update t_refund_info
+        <set>
+            <if test="refundNo != null and refundNo != ''">
+                refund_no = #{refundNo},
+            </if>
+            <if test="refundId != null and refundId != ''">
+                refund_id = #{refundId},
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee},
+            </if>
+            <if test="refund != null">
+                refund = #{refund},
+            </if>
+            <if test="reason != null and reason != ''">
+                reason = #{reason},
+            </if>
+            <if test="refundStatus != null and refundStatus != ''">
+                refund_status = #{refundStatus},
+            </if>
+            <if test="contentReturn != null and contentReturn != ''">
+                content_return = #{contentReturn},
+            </if>
+            <if test="contentNotify != null and contentNotify != ''">
+                content_notify = #{contentNotify},
+            </if>
+        </set>
+        where refund_no = #{refundNo}
+    </update>
+    <select id="getProcessingRefundByDuration" resultMap="RefundInfoMap">
+        select
+        order_no, refund_no, refund_id, total_fee, refund, reason, refund_status, content_return, content_notify, id, create_time, update_time
+        from t_refund_info
+        where create_time <![CDATA[ <= ]]> #{createTime}
+        and refund_status = #{refundStatus}
+    </select>
 </mapper>

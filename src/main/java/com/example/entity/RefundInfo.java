@@ -1,19 +1,21 @@
 package com.example.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @TableName("t_refund_info")
 public class RefundInfo extends BaseEntity{
 
     private String orderNo;
-    private String refund_no;
-    private String refund_id;
-    private Long total_fee;
-    private Long refund;
+    private String refundNo;
+    private String refundId;
+    private Integer totalFee;
+    private Integer refund;
     private String reason;
-    private String refund_status;
-    private String content_return;
-    private String content_notify;
+    private String refundStatus;
+    private String contentReturn;
+    private String contentNotify;
 }
