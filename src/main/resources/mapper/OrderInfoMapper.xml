@@ -78,4 +78,10 @@
         where create_time <![CDATA[ <= ]]> #{createTime}
         and order_status = #{orderStatus}
     </select>
+    <select id="selectByOrderNo" resultMap="OrderInfoMap">
+        select
+        title, order_no, user_id, product_id, total_fee, code_url, order_status, id, create_time, update_time
+        from t_order_info
+        where order_no = #{orderNo}
+    </select>
 </mapper>

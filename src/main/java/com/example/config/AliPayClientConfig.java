@@ -1,6 +1,8 @@
 package com.example.config;
 
-import com.alipay.api.*;
+import com.alipay.v3.ApiClient;
+import com.alipay.v3.ApiException;
+import com.alipay.v3.util.model.AlipayConfig;
 import com.wechat.pay.java.core.Config;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
 import jakarta.annotation.PostConstruct;
@@ -10,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "alpay")
+@ConfigurationProperties(prefix = "alipay")
 @Data
 public class AliPayClientConfig {
     private String appId;
@@ -21,26 +23,17 @@ public class AliPayClientConfig {
     private String contentKey;
     private String returnUrl;
     private String notifyUrl;
-    private AlipayClient client;
     @PostConstruct
-    public void aliPayClientConfig() throws AlipayApiException {
-
+    public void aliPayClient() throws ApiException {
+        System.out.println(appId);
         AlipayConfig alipayConfig = new AlipayConfig();
-        //设置网关地址
         alipayConfig.setServerUrl(gatewayUrl);
-        //设置应用ID
         alipayConfig.setAppId(appId);
-        //设置应用私钥
         alipayConfig.setPrivateKey(merchantPrivateKey);
-        //设置请求格式，固定值json
-        alipayConfig.setFormat(AlipayConstants.FORMAT_JSON);
-        //设置字符集
-        alipayConfig.setCharset(AlipayConstants.CHARSET_UTF8);
-        //设置支付宝公钥
         alipayConfig.setAlipayPublicKey(alipayPublicKey);
-        //设置签名类型
-        alipayConfig.setSignType(AlipayConstants.SIGN_TYPE_RSA2);
-        //构造client
-        client= new DefaultAlipayClient(alipayConfig);
+        ApiClient defaultClient = com.alipay.v3.Configuration.getDefaultApiClient();
+        // 初始化alipay参数（全局设置一次）
+        defaultClient.setAlipayConfig(alipayConfig);
+
     }
 }

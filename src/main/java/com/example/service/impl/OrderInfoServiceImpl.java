@@ -39,7 +39,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
     @Override
     public OrderInfo update(OrderInfo orderInfo) {
         baseMapper.update(orderInfo);
-        return baseMapper.selectById(orderInfo.getProductId());
+        return baseMapper.selectByOrderNo(orderInfo);
     }
 
     @Override
@@ -64,3 +64,4 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
         return baseMapper.getNoPayOrderByDuration(orderInfo);
     }
 }
+

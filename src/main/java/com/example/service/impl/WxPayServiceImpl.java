@@ -69,7 +69,7 @@ public class WxPayServiceImpl implements WxPayService {
         Amount amount = new Amount();
         amount.setTotal(orderInfo.getTotalFee());
         request.setAmount(amount);
-        request.setAppid(wxPayConfig.getAppid());
+        request.setAppid(wxPayConfig.getAppId());
         request.setMchid(wxPayConfig.getMchId());
         request.setDescription(orderInfo.getTitle());
         request.setNotifyUrl(wxPayConfig.getNotifyDomain().concat(WxNotifyType.APP_NOTIFY.getType()));
